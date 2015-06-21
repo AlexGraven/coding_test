@@ -14,7 +14,7 @@ class UpdatesController < ApplicationController
 
   # GET /updates/new
   def new
-    @update = Update.new
+    @update = Update.new update_params
   end
 
   # GET /updates/1/edit
@@ -25,7 +25,7 @@ class UpdatesController < ApplicationController
   # POST /updates
   # POST /updates.json
   def create
-    @update = Update.new
+    @update = Update.new update_params
 
     respond_to do |format|
       if @update.save
@@ -57,5 +57,6 @@ class UpdatesController < ApplicationController
     end
 
    def update_params
+     params[:update].permit(:csv_file)
    end
 end
