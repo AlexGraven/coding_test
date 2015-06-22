@@ -14,8 +14,7 @@ class UpdatesController < ApplicationController
 
   # GET /updates/new
   def new
-    @update = Update.new update_params
-    @update.create_users_from_batch
+    @update = Update.new
   end
 
   # GET /updates/1/edit
@@ -27,6 +26,7 @@ class UpdatesController < ApplicationController
   # POST /updates.json
   def create
     @update = Update.new update_params
+    errors = @update.create_users_from_batch
 
     respond_to do |format|
       if @update.save

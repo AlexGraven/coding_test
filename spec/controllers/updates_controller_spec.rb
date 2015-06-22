@@ -26,7 +26,7 @@ describe UpdatesController do
 
   describe "GET new" do
     it "assigns a new update as @update" do
-      get :new, {update: {csv_file: @file}}, valid_session
+      get :new, valid_session
       expect(assigns(:update)).to be_a_new(Update)
     end
   end

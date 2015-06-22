@@ -21,7 +21,9 @@ class Update < ActiveRecord::Base
       current_row += 1
     end
     write_users_to_db users
-    erroring_rows
+    return erroring_rows
+    rescue TypeError => e
+      errors.add(:base, "Problem creating users from CSV file")
   end
 
   private
