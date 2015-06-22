@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe User do
 
+
+  it 'tests the happy path' do
+    user = User.create('first_name' => 'Juan')
+    expect(user).to be_valid
+  end
+
   context 'testing custom validator' do
 
     it 'when first name is nil' do

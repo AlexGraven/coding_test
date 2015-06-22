@@ -10,7 +10,6 @@ class UserHashValidator
 
    def validate_first_name first_name
     return "Cannot be blank" if first_name.nil?
-    return "Cannot be blank" if first_name.empty?
     return "Too short" if first_name.length() < 3
     return "Must be alphanumeric" if first_name.match(/[^a-zA-Z]+/)
    end
