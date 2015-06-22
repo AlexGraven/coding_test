@@ -16,7 +16,7 @@ class Update < ActiveRecord::Base
     CSV.foreach(self.csv_file.path, headers: true) do |row|
       row = row.to_hash
       errors = user_hash_validator.validate_hash(row).values.flatten
-      users.push "('#{row['first_name']}', '#{row['last_name']}', #{row['age']}, '#{row['sex']}', '#{row['personality']}')"  if errors == [nil]
+      users.push "('#{row['first_name']}', '#{row['last_name']}', #{row['age']}, '#{row['sex']}', '#{row['personality']}', #{self.id})"  if errors == [nil]
       erroring_rows << current_row unless errors == [nil]
       current_row += 1
     end
@@ -30,7 +30,7 @@ class Update < ActiveRecord::Base
 
   def write_users_to_db users
     conn = ActiveRecord::Base.connection
-    sql = "INSERT INTO users (first_name, last_name, age, sex, personality) VALUES #{users.join(', ')}"
+    sql = "INSERT INTO users (first_name, last_name, age, sex, personality, update_id) VALUES #{users.join(', ')}"
     conn.execute sql
   end
 

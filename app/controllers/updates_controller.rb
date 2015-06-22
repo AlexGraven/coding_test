@@ -26,10 +26,10 @@ class UpdatesController < ApplicationController
   # POST /updates.json
   def create
     @update = Update.new update_params
-    errors = @update.create_users_from_batch
 
     respond_to do |format|
       if @update.save
+        errors = @update.create_users_from_batch
         format.html { redirect_to @update, notice: 'Update was successfully created.' }
         format.json { render action: 'show', status: :created, location: @update }
       else
