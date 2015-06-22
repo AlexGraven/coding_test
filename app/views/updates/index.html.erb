@@ -3,8 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th></th>
+      <th>ID</th>
+      <th>Updated At</th>
       <th></th>
     </tr>
   </thead>
@@ -12,6 +12,8 @@
   <tbody>
     <% @updates.each do |update| %>
       <tr>
+        <td><%= update.id %>
+        <td><%= update.updated_at %>
         <td><%= link_to 'Show', update %></td>
       </tr>
     <% end %>

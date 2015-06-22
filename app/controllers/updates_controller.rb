@@ -30,7 +30,9 @@ class UpdatesController < ApplicationController
     respond_to do |format|
       if @update.save
         errors = @update.create_users_from_batch
-        format.html { redirect_to @update, notice: 'Update was successfully created.' }
+        notice_str = "Update was successfully created."
+        notice_str += "Errors found in CSV in rows [#{errors.join(',')}]" unless errors.empty?
+        format.html { redirect_to @update, notice: notice_str }
         format.json { render action: 'show', status: :created, location: @update }
       else
         format.html { render action: 'new' }
