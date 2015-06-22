@@ -15,6 +15,7 @@ class UpdatesController < ApplicationController
   # GET /updates/new
   def new
     @update = Update.new update_params
+    @update.create_users_from_batch
   end
 
   # GET /updates/1/edit

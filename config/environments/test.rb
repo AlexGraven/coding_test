@@ -34,6 +34,10 @@ CodingTest::Application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  config.paperclip_defaults = {
+    path: ":rails_root/spec/fixtures/files/:basename.:extension"
+  }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
+

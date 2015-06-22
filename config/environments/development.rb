@@ -27,6 +27,10 @@ CodingTest::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.paperclip_defaults = {
+    path: ":rails_root/spec/fixtures/files/:basename.:extension"
+  }
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
+
